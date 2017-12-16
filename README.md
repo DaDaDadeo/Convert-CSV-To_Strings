@@ -6,6 +6,6 @@ There are two versions of the program. One will display the results only. The ot
 
 This program will read a datalog file. Each line is parsed to remove the comma and separate each integer. The integer is then converted to 2 ascii characters. The converted data is stored in a new file while leaving the original datalog unchanged.
 
-The programs are written for Windows where the end of line characters are edited for LF (Line Feed) only.
+The programs are written for both Windows Linux where the end of line characters are handled according to which operating system is used.
 
 The programs can be compiled using the Visual Studios VS Command prompt. Compile Command Example: cl csv_to_string_file.c
