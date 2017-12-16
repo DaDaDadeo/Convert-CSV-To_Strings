@@ -3,7 +3,7 @@
 CSV DATALOG FILE INTEGER TO STRING CONVERTER by Dan Lindamood III 2017-12-15
 
 Read an IDEC datalog file of ascii strings stored as comma separated 16 bit integers.
-Parse each logline. Convert each integer to 2 ascii characters and display them.
+Parse each logline. Convert each integer to 2 ascii characters and write them to a new file.
 
 
 Build 2017-12-15
