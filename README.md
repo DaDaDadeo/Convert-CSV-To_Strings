@@ -8,4 +8,5 @@ This program will read a datalog file. Each line is parsed to remove the comma a
 
 The programs are written for both Windows Linux where the end of line characters are handled according to which operating system is used.
 
-The programs can be compiled using the Visual Studios VS Command prompt. Compile Command Example: cl csv_to_string_file.c
+The programs can be compiled using the Visual Studios VS Command prompt. 
+Compile Command Example: cl csv_to_string_file.c
