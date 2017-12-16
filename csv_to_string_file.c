@@ -3,10 +3,12 @@
 CSV DATALOG FILE INTEGER TO STRING CONVERTER by Dan Lindamood III 2017-12-15
 
 Read an IDEC datalog file of ascii strings stored as comma separated 16 bit integers.
-Parse each logline. Convert each integer to 2 ascii characters and write them to a new file.
+Parse each logline. Convert each integer to 2 ascii characters and write to new file.
 
 
 Build 2017-12-15
+
+Notes: Comment out 71 and 72 and uncomment 73 if compiled for Linux. 
 
 
 *********************************************************************************************************/
@@ -62,11 +64,12 @@ int convert(char* wordline, FILE* to_file){
                 strcpy(cell, getfield(wordline, column)); // go to subroutine to retrieve the singe word registry 16 bit integer
                 if (strlen(cell) > 0){
                         msg_in = atoi(cell); //Check value of word registry integer
-						if ((msg_in > 0) && (msg_in != 2560)){ //Ignore NULL values or single LF character. Windows handle this.
+						if ((msg_in > 0) && (msg_in != 2560)){ //Ignore NULL values or single LF character. Windows handles this.
 							msg = msg_in >> 8; msg |= msg_in << 8; // shift bits to retrieve each ascii character(2)
 							characters = (char *)&msg;
-							if (msg_in == 3338)fprintf(to_file,"%c", characters[0]); //Send only single LF character
-							else fprintf(to_file,"%c%c", characters[0],characters[1]);
+							if (msg_in == 3338)fprintf(to_file,"%c", characters[0]); //Send only single LF character for Windows
+							else fprintf(to_file,"%c%c", characters[0],characters[1]); // Reserved for Windows only
+//							fprintf(to_file,"%c%c", characters[0],characters[1]); //Linux will use the carriage return
 						}
                 }
 				else done = 0;
@@ -98,7 +101,7 @@ Enter the datalog file name. \nInclude path if file is located in a separate fol
 
 	if (log_file == NULL) { // Check if log file exists. Close application if the file is not there.
 		printf("Log File entered (%s) is not readable\n\n", read_file_name);
-	    system("pause");
+	    system("pause");// Comment Out for Linux
 		exit (0);
 	}
 	
@@ -110,7 +113,7 @@ Enter the datalog file name. \nInclude path if file is located in a separate fol
 		
 		if (out_file == NULL) {// Check if new file was created. Close application if something went wrong.
 			printf("New file (%s) cannot be created.\n\n", write_file_name);
-			system("pause");
+			system("pause");// Comment Out for Linux
 			exit (0);
 		}
 		else {
@@ -123,7 +126,7 @@ Enter the datalog file name. \nInclude path if file is located in a separate fol
 		out_file = fopen(write_file_name, "r"); // Verify that the file creation worked
 		if (out_file == NULL) {// Check if new file was created. Close application if something went wrong.
 			printf("New file (%s) was not created.\n\n", write_file_name);
-			system("pause");
+			system("pause");// Comment Out for Linux
 			exit (0);
 		}
 		else printf("\n\n\nFile creation was successful\n");
@@ -132,6 +135,6 @@ Enter the datalog file name. \nInclude path if file is located in a separate fol
 		fclose(log_file); // Close the file at completion
 	}
 	printf("\n\n"); //add a few empty lines after completion
-    system("pause");
+    system("pause"); // Comment Out for Linux
 	exit (0);
 }
