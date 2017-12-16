@@ -8,4 +8,4 @@ This program will read a datalog file. Each line is parsed to remove the comma a
 
 The programs are written for Windows where the end of line characters are edited for LF (Line Feed) only.
 
-The programs can be compiled using the Visual Studios VS Command prompt. Ex: cl csv_to_string_file
+The programs can be compiled using the Visual Studios VS Command prompt. Compile Command Example: cl csv_to_string_file.c
