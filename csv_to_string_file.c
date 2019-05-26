@@ -8,7 +8,7 @@ Parse each logline. Convert each integer to 2 ascii characters and write to new 
 
 Build 2017-12-15
 
-Notes: Comment out 71 and 72 and uncomment 73 if compiled for Linux. 
+Notes: Comment out 70 and 71 and uncomment 72 if compiled for Linux. 
 
 
 *********************************************************************************************************/
